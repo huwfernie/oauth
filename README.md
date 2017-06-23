@@ -1,7 +1,3 @@
-### Objectives
-- Create an oAuth _**handshake**_ between an Express app and an oAuth provider.
-- Access the user's profile, create a user record, and create a session cookie.
-
 # oAuth with MEAN stack
 
 
