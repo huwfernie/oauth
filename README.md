@@ -51,12 +51,17 @@ then:
 
 ```
 angular
-  .module('githubAuth')
+  .module('eventApp')
   .config(Auth);
 
 Auth.$inject = ['$authProvider'];
 function Auth($authProvider) {
 
+  // for form based register and login
+  $authProvider.signupUrl = '/api/register';
+  $authProvider.loginUrl = '/api/login';
+
+  // for github oAuth
   $authProvider.github({
     clientId: 'd2cfd327c82736a6383d', // change this for different apps
     url: '/api/oauth/github'
@@ -159,7 +164,7 @@ export eventApp_GITHUB_CLIENT_ID="d2cfd327c82736a6383d"
 export eventApp_GITHUB_CLIENT_SECRET="ASDFGHJKL123456789QWERTYUIOP1234567890ZX"
 ```
 
-then to reload the file, from terminal type: `$ source ~/.zshrc`
+then to reload the file, from terminal type: `$ source ~/.zshrc` in each of your terminal windows
 
 finally type `$ env` and you should get a print of all environment variables including the new ones.
 
@@ -169,7 +174,8 @@ finally type `$ env` and you should get a print of all environment variables inc
 
 _controllers/oauth.js_
 
-```const rp = require('request-promise');
+```
+const rp = require('request-promise');
 const config = require('../config/oauth');
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
