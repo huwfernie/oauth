@@ -75,7 +75,7 @@ _src/js/controllers/login.js_
 
 ```
 angular
-  .module('githubAuth')
+  .module('eventApp')
   .controller('LoginCtrl', LoginCtrl);
 
 LoginCtrl.$inject = ['$auth', '$state'];
@@ -94,10 +94,11 @@ function LoginCtrl($auth, $state) {
 And the button comes from the view
 
 _src/js/views/login.html_
+
 `<button ng-click="login.authenticate('github')">Sign in with GitHub</button>`
 
 
-###lastly
+### lastly
 
 last thing to remember is that you'll need to add satellizer to the app.js file, like so:
 
@@ -105,7 +106,7 @@ _src/app.js_
 
 ```
 angular
-  .module('githubAuth', ['ui.router', 'ngResource', 'satellizer']);
+  .module('eventApp', ['ui.router', 'ngResource', 'satellizer']);
 ```
 
 
@@ -356,7 +357,6 @@ userSchema.pre('validate', function checkPassword(next) {
 });
 ```
 Now the user either has to have a `password` **or** a `githubId` when registering.
-
 
 ### but
 
